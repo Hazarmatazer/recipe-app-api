@@ -8,11 +8,10 @@ from django.core.management import call_command
 from django.db.utils import OperationalError
 from django.test import SimpleTestCase
 
-@patch('core.management.commands.wait_for_db.Command.check')
 
+@patch('core.management.commands.wait_for_db.Command.check')
 class CommandTests(SimpleTestCase):
     """Test commands."""
-
     def test_wait_for_db_ready(self, patched_check):
         """Test waiting for database if database ready."""
         patched_check.return_value = True
@@ -32,3 +31,4 @@ class CommandTests(SimpleTestCase):
         patched_check.assert_called_with(databases=['default'])
 
 
+# End-of-file (EOF)
